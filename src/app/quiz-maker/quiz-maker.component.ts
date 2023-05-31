@@ -19,9 +19,9 @@ export class QuizMakerComponent implements OnInit, OnDestroy {
   categorySelected: Category = {} as Category;
   subCategorySelected: Category = {} as Category;
   showSubCategory = false;
+  parentCategoriesWithChildren: Category[] = [];
 
   private questions: Question[] = [];
-  private parentCategoriesWithChildren: Category[] = [];
   private selectedDifficulty: Difficulty | null = null;
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
@@ -91,7 +91,7 @@ export class QuizMakerComponent implements OnInit, OnDestroy {
     this.questions$ = of([]);
   }
 
-  private buildCategoryList(allCategories: Category[]): void {
+  buildCategoryList(allCategories: Category[]): void {
     let fullCategoryList: Category[] = []
 
     allCategories.forEach( category => {
