@@ -127,6 +127,8 @@ export class QuizMakerComponent implements OnInit, OnDestroy {
   private showSubCategoriesIfAny(parentCategoryId: number) : void {
     this.showSubCategory = false;
 
+    this.subCategorySelected = {} as Category;
+
     const subCategories: Category[] = this.findAnySubCategoriesOfParent(parentCategoryId);
 
     this.subCategories$.next(subCategories);
