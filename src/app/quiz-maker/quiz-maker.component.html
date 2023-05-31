@@ -1,0 +1,29 @@
+<div class="row">
+
+  <app-autofilter-dropdown [entries$]="parentCategories$"
+                          (selectionChange)="categorySelectedClick($event)"
+                          [(selection)]="categorySelected"
+                          placeholder="Enter a category">
+  </app-autofilter-dropdown>
+
+  <app-autofilter-dropdown *ngIf="showSubCategory === true" 
+                          [entries$]="subCategories$"
+                          (selectionChange)="subCategorySelectedClick()"
+                          [(selection)]="subCategorySelected"
+                          placeholder="Enter a sub-category">
+  </app-autofilter-dropdown>
+
+  <select #difficulty id="difficultySelect" (change)='difficultySelected()'>
+    <option>Select difficulty</option>
+    <option>Easy</option>
+    <option>Medium</option>
+    <option>Hard</option>
+  </select>
+
+  <button class="primary" id="createBtn" (click)="createQuiz(difficulty.value)">Create</button>
+
+</div>
+
+<div class="row">
+   <app-quiz [allowChangeQuestion]="allowChangeQuestion" [questions]="questions$ | async" (changeQuestion) = changeQuestionEvent($event)></app-quiz>
+</div>
